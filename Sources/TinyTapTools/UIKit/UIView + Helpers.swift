@@ -11,7 +11,7 @@ import Foundation
 extension UIView {
 
     @discardableResult
-    func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) -> AnchoredConstraints {
+    public func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) -> AnchoredConstraints {
 
         translatesAutoresizingMaskIntoConstraints = false
         var anchoredConstraints = AnchoredConstraints()
@@ -45,7 +45,7 @@ extension UIView {
         return anchoredConstraints
     }
 
-    @objc func fillSuperview(padding: UIEdgeInsets = .zero) {
+    @objc public func fillSuperview(padding: UIEdgeInsets = .zero) {
         translatesAutoresizingMaskIntoConstraints = false
         if let superviewTopAnchor = superview?.topAnchor {
             topAnchor.constraint(equalTo: superviewTopAnchor, constant: padding.top).isActive = true
@@ -64,7 +64,7 @@ extension UIView {
         }
     }
 
-    func centerInSuperview(size: CGSize = .zero, padding: CGSize = .zero) {
+    public func centerInSuperview(size: CGSize = .zero, padding: CGSize = .zero) {
         translatesAutoresizingMaskIntoConstraints = false
         if let superviewCenterXAnchor = superview?.centerXAnchor {
             centerXAnchor.constraint(equalTo: superviewCenterXAnchor, constant: padding.width).isActive = true
@@ -83,31 +83,31 @@ extension UIView {
         }
     }
 
-    func centerXInSuperview() {
+    public func centerXInSuperview() {
         translatesAutoresizingMaskIntoConstraints = false
         if let superViewCenterXAnchor = superview?.centerXAnchor {
             centerXAnchor.constraint(equalTo: superViewCenterXAnchor).isActive = true
         }
     }
 
-    func centerYInSuperview() {
+    public func centerYInSuperview() {
         translatesAutoresizingMaskIntoConstraints = false
         if let centerY = superview?.centerYAnchor {
             centerYAnchor.constraint(equalTo: centerY).isActive = true
         }
     }
 
-    func constrainWidth(constant: CGFloat) {
+    public func constrainWidth(constant: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: constant).isActive = true
     }
 
-    func constrainHeight(constant: CGFloat) {
+    public func constrainHeight(constant: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraint(equalToConstant: constant).isActive = true
     }
 
-    func aspectRatio(_ ratio: CGFloat) -> NSLayoutConstraint {
+    public func aspectRatio(_ ratio: CGFloat) -> NSLayoutConstraint {
         return NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: self, attribute: .width, multiplier: ratio, constant: 0)
     }
 
@@ -116,7 +116,7 @@ extension UIView {
         NSLayoutConstraint.activate(constraints)
     }
 
-    func pin(to view: UIView, insets: UIEdgeInsets = .zero) {
+    public func pin(to view: UIView, insets: UIEdgeInsets = .zero) {
         UIView.activate(constraints: [
             topAnchor.constraint(equalTo: view.topAnchor, constant: insets.top),
             leftAnchor.constraint(equalTo: view.leftAnchor, constant: insets.left),
@@ -125,7 +125,7 @@ extension UIView {
         ])
     }
 
-    func center(in view: UIView, offset: UIOffset = .zero) {
+    public func center(in view: UIView, offset: UIOffset = .zero) {
         UIView.activate(constraints: [
             centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: offset.horizontal),
             centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: offset.vertical)
