@@ -5,7 +5,7 @@
 //  Created by Yoel Lev on 1/16/22.
 //
 
-import Foundation
+import UIKit
 
 // MARK: - UIKit Constraint Wrapper
 extension UIView {
@@ -133,6 +133,6 @@ extension UIView {
     }
 }
 
-struct AnchoredConstraints {
+public struct AnchoredConstraints {
     var top, leading, bottom, trailing, width, height: NSLayoutConstraint?
 }
